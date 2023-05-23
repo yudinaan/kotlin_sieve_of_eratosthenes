@@ -18,15 +18,17 @@ fun sieve_of_eratosthenes(n: Int) {
     }
 
     var j = 2
-    var p = generateSequence(j*j){ if (it < n) it + j else null}
+    while (j*j <= n) {
+        var p = generateSequence(j * j) { if (it < n) it + j else null }
 
-    var z = 0
-    var d = array[z]
-    for (d in p) {
-        array = removeNum(array, d)
+        var z = 0
+        var d = array[z]
+        for (d in p) {
+            array = removeNum(array, d)
         }
-    z++
-    j++
+        z++
+        j++
+    }
 
     print("Список простых чисел до $n: ")
     println(array.contentToString())
